@@ -5,7 +5,7 @@ services:
     image: docketeerxiv/postgres:latest
     restart: always
     ports:
-      - '5432:5432'
+      - '5431:5432'
     volumes:
       - ./imageConfigs/postgres/docketeerdb:/var/lib/postgresql/data/
 
