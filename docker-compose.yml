@@ -19,7 +19,7 @@ services:
     image: docketeerxiv/cadvisor:latest
     container_name: docketeer-cadvisor
     ports:
-      - '8080:8080'
+      - '9091:8080'
 
     volumes:
       - /:/rootfs:ro
@@ -36,7 +36,7 @@ services:
     image: docketeerxiv/node-exporter
     container_name: docketeer-node-exporter
     ports:
-      - '9100:9100'
+      - '9092:9100'
     volumes:
       #system info for linux machines
       - /proc:/host/proc:ro
@@ -51,7 +51,7 @@ services:
     image: docketeerxiv/prometheus:latest
     container_name: docketeer-prometheus
     ports:
-      - '9090:9090'
+      - '9093:9090'
     volumes:
       - ./imageConfigs/prometheus/promData:/prometheus
     depends_on:
@@ -65,7 +65,7 @@ services:
     image: docketeerxiv/grafana:latest
     container_name: docketeer-grafana
     ports:
-      - '2999:3000'
+      - '9094:3000'
     environment:
       GF_PATHS_CONFIG: /etc/grafana/grafana.ini
       GF_AUTH_ANONYMOUS_ENABLED: 'true'
@@ -84,7 +84,7 @@ services:
     image: docketeerxiv/docketeer:14.0.0
     container_name: docketeer
     ports:
-      - '4000:4000'
+      - '9095:4000'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: npm start
